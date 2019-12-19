@@ -1,36 +1,36 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://enemy/Mob.gd" type="Script" id=1]
-[ext_resource path="res://assets/art/enemyWalking_1.png" type="Texture" id=2]
-[ext_resource path="res://assets/art/enemyWalking_2.png" type="Texture" id=3]
-[ext_resource path="res://assets/art/enemyFlyingAlt_1.png" type="Texture" id=4]
-[ext_resource path="res://assets/art/enemyFlyingAlt_2.png" type="Texture" id=5]
-[ext_resource path="res://assets/art/enemySwimming_1.png" type="Texture" id=6]
-[ext_resource path="res://assets/art/enemySwimming_2.png" type="Texture" id=7]
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "fly",
-"speed": 4.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "swim",
-"speed": 3.0
-} ]
+[ext_resource path="res://assets/art/coins.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 37.6806
-height = 23.068
+radius = 23.1983
+height = 2.75403
+
+[sub_resource type="Animation" id=3]
+resource_name = "Flip"
+length = 2.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.2, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 2,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "FlipReverse"
+length = 1.2
+loop = true
 
 [node name="Mob" type="RigidBody2D"]
+position = Vector2( 0, 0.766937 )
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource( 1 )
@@ -38,17 +38,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.75, 0.75 )
-frames = SubResource( 1 )
-animation = "walk"
-frame = 1
-playing = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource( 2 )
 
 [node name="Visibility" type="VisibilityNotifier2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+vframes = 4
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Flip"
+anims/Flip = SubResource( 3 )
+anims/FlipReverse = SubResource( 4 )
 [connection signal="body_entered" from="." to="." method="_on_Mob_body_entered"]
 [connection signal="screen_exited" from="Visibility" to="." method="_on_Visibility_screen_exited"]

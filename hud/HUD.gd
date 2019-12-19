@@ -10,7 +10,7 @@ func showMessage(text):
 func showGameOver():
 	showMessage("Game Over")
 	yield($MessageTimer, "timeout")
-	$MessageLabel.text = "Collect the\nCreeps!"
+	$MessageLabel.text = "Collect the\nCoins!"
 	$MessageLabel.show()
 	# TODO move next line to a metod
 	yield(get_tree().create_timer(1), 'timeout')

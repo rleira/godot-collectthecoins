@@ -24,7 +24,7 @@ color = Color( 0.901961, 0.72549, 0.631373, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
-[node name="MobTimer" type="Timer" parent="."]
+[node name="CoinTimer" type="Timer" parent="."]
 wait_time = 0.5
 
 [node name="LevelTimer" type="Timer" parent="."]
@@ -51,7 +51,7 @@ stream = ExtResource( 6 )
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
-[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
+[connection signal="timeout" from="CoinTimer" to="." method="_on_CoinTimer_timeout"]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_LevelTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="newGame"]

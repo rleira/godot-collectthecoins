@@ -13,7 +13,7 @@ func _ready():
 
 func gameOver():
 	$LevelTimer.stop()
-	$MobTimer.stop()
+	$CoinTimer.stop()
 	$HUD.showGameOver()
 	$Music.stop()
 	$DeathSound.play()
@@ -30,7 +30,7 @@ func newGame():
 	$HUD.hideStartButton()
 	$Music.play()
 
-func _on_MobTimer_timeout():
+func _on_CoinTimer_timeout():
 	# Choose a random location on Path2D.
 	$MobPath/MobSpawnLocation.set_offset(randi())
 	# Create a Mob instance and add it to the scene.
@@ -57,7 +57,7 @@ func _on_LevelTimer_timeout():
 		gameOver()
 
 func _on_StartTimer_timeout():
-	$MobTimer.start()
+	$CoinTimer.start()
 	$LevelTimer.start()
 
 func _on_Player_hit():
