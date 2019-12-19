@@ -7,3 +7,10 @@ Optionally and if you have the godot binary in your PATH you can run the game wi
 ```
 godot Main.tscn
 ```
+
+####Running exported version from the browser
+To run the exported version you need to serve the exported assets.
+To do so run the following command from the export folder:
+```python -m SimpleHTTPServer 8000```
+Then open ```localhost:8000``` and open the .html from the list.
+See https://github.com/godotengine/godot/issues/16664 for more details.
