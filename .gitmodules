@@ -1,0 +1,3 @@
+[submodule "submodules/godot-html5-game-input"]
+	path = submodules/godot-html5-game-input
+	url = git@github.com:rleira/godot-html5-game-input.git

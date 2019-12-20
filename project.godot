@@ -19,6 +19,10 @@ config/name="collect the coins"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameInput="*res://submodules/godot-html5-game-input/javascript/GameInput.gd"
+
 [display]
 
 window/size/width=480

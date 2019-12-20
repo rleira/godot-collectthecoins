@@ -10,6 +10,7 @@ var time
 func _ready():
 	randomize()
 	newGame()
+	print(GameInput.getKey("version"))
 
 func gameOver():
 	$LevelTimer.stop()
